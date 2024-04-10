@@ -1,0 +1,70 @@
+{
+  "name": "combo-tab",
+  "displayName": "combo-tab",
+  "publisher": "jspatrick",
+  "license": "MIT",
+  "badges": [
+    {
+        "url": "https://badgen.net/badge/combo-tab/1.0/green"
+    }
+  ],
+  "description": "combo tab is a plugin that allows you to execute snippets continuously",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Particaly/vscode-combo-tab.git"
+  },
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.88.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "combo-tab.tab-listener",
+        "title": "连续自动触发tab"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "combo-tab.tab-listener",
+        "key": "tab",
+        "when": "editorFocus"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "yarn run package",
+    "compile": "webpack",
+    "watch": "webpack --watch",
+    "package": "webpack --mode production --devtool hidden-source-map",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "pretest": "yarn run compile-tests && yarn run compile && yarn run lint",
+    "lint": "eslint src --ext ts",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.6",
+    "@types/node": "18.x",
+    "@types/vscode": "^1.88.0",
+    "@typescript-eslint/eslint-plugin": "^7.4.0",
+    "@typescript-eslint/parser": "^7.4.0",
+    "@vscode/test-cli": "^0.0.8",
+    "@vscode/test-electron": "^2.3.9",
+    "eslint": "^8.57.0",
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.3.3",
+    "webpack": "^5.91.0",
+    "webpack-cli": "^5.1.4"
+  },
+  "dependencies": {
+    "chokidar": "^3.6.0"
+  }
+}
